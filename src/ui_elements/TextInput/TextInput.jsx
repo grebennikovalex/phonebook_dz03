@@ -3,6 +3,8 @@ import { Controller, useFormContext } from "react-hook-form";
 import cn from "classnames";
 import style from "./TextInput.module.scss";
 
+const regexSpaces = /^([a-zA-Z0-9а-яА-Я]+\s)*[a-zA-Zа-яА-Я0-9]+$/;
+
 export default function TextInput({ label, name, required = false, disabled, editingMode = false }) {
   const { register, control } = useFormContext();
 
@@ -12,6 +14,13 @@ export default function TextInput({ label, name, required = false, disabled, edi
       <Controller
         control={control}
         name={name}
+        rules={{
+          required,
+          pattern: {
+            value: regexSpaces,
+            message: "Некорректное имя",
+          },
+        }}
         render={({ field: { onChange, value } }) => (
           <input
             {...register(name, { required })}

@@ -6,7 +6,10 @@ import style from "./Button.module.scss";
 export default function Button({ onClick = () => {}, type = "primary", disabled = false, loading = false, text }) {
   return (
     <button
-      onClick={onClick}
+      onClick={(e) => {
+        e.preventDefault();
+        onClick();
+      }}
       disabled={disabled}
       className={cn(style.button, {
         [style.disabled]: disabled,

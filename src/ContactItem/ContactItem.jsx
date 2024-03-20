@@ -28,6 +28,7 @@ export default function ContactItem({ contact, getAll }) {
   } = form;
 
   const editContact = async () => {
+    setLoading(true);
     setEditingMode(false);
     const values = getValues();
     const { name, phone } = values;
@@ -42,7 +43,7 @@ export default function ContactItem({ contact, getAll }) {
     try {
       const response = await fetch(`http://109.71.240.150:3001/api/v1.0/contacts/${id}`, data);
       if (response.status === 200) {
-        getAll();
+        getAll(false);
         setLoading(false);
       }
     } catch (err) {
@@ -55,11 +56,20 @@ export default function ContactItem({ contact, getAll }) {
     <>
       {editingMode ? (
         <FormProvider {...form}>
-          <div className={style.editItem}>
-            <TextInput name="name" required label="" disabled={false} editingMode={true} />
-            <PhoneInput name="phone" required label="" disabled={false} editingMode={true} />
-          </div>
-          <OkButton onClick={() => editContact()} disabled={!isValid} loading={loading} />
+          <form
+            className={style.form}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && isValid) {
+                editContact();
+              }
+            }}
+          >
+            <div className={style.editItem}>
+              <TextInput name="name" required label="" disabled={false} editingMode={true} />
+              <PhoneInput name="phone" required label="" disabled={false} editingMode={true} />
+            </div>
+            <OkButton onClick={() => editContact()} disabled={!isValid || loading} loading={loading} />
+          </form>
         </FormProvider>
       ) : (
         <>
@@ -80,7 +90,7 @@ export default function ContactItem({ contact, getAll }) {
           >
             изменить
           </button>
-          <DeleteButton id={id} getAll={() => getAll()} />
+          <DeleteButton id={id} name={name} getAll={() => getAll()} />
         </>
       )}
     </>

@@ -4,7 +4,7 @@ import Phonebook from "./Phonebook/Phonebook.jsx";
 import "./styles/global.scss";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  // <React.StrictMode>
-  <Phonebook />
-  // </React.StrictMode>
+  <React.StrictMode>
+    <Phonebook />
+  </React.StrictMode>
 );

@@ -6,7 +6,6 @@ import PhoneInput from "../ui_elements/PhoneInput/PhoneInput";
 import Button from "../ui_elements/Button/Button";
 import Spinner from "../ui_elements/Spinner/Spinner";
 import style from "./Phonebook.module.scss";
-import { isEmpty } from "../utils/utils.js";
 import ContactItem from "../ContactItem/ContactItem.jsx";
 import cn from "classnames";
 
@@ -29,8 +28,9 @@ export default function Phonebook() {
     formState: { isValid },
   } = form;
 
-  const getAll = async () => {
-    setLoadingAll(true);
+  const getAll = async (loading) => {
+    if (loading) setLoadingAll(true);
+
     const data = {
       method: "GET",
     };
@@ -64,7 +64,7 @@ export default function Phonebook() {
     try {
       const response = await fetch(`http://109.71.240.150:3001/api/v1.0/contacts`, data);
       if (response.status === 201) {
-        getAll();
+        getAll(true);
         setLoadingAdd(false);
       }
     } catch (err) {
@@ -77,7 +77,7 @@ export default function Phonebook() {
   };
 
   useEffect(() => {
-    getAll();
+    getAll(true);
   }, []);
 
   return (
@@ -112,7 +112,7 @@ export default function Phonebook() {
           <form
             className={style.fieldsContainer}
             onKeyDown={(event) => {
-              if (event.keyCode === 13) {
+              if (event.key === "Enter") {
                 addContact();
               }
             }}
