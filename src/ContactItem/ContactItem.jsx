@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import cn from "classnames";
-import Spinner from "../ui_elements/Spinner/Spinner";
 import TextInput from "../ui_elements/TextInput/TextInput";
 import PhoneInput from "../ui_elements/PhoneInput/PhoneInput";
 import DeleteButton from "../DeleteButton/DeleteButton.jsx";

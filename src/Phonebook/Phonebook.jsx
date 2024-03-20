@@ -37,7 +37,7 @@ export default function Phonebook() {
     try {
       const response = await fetch(`http://109.71.240.150:3001/api/v1.0/contacts`, data);
       const result = await response.json();
-      setContacts(result.filter((obj) => !isEmpty(obj)));
+      setContacts(result);
       setLoadingAll(false);
     } catch (err) {
       setLoadingAll(false);
