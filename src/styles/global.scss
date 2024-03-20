@@ -1,0 +1,32 @@
+@font-face {
+  font-family: "TildaSans-Light";
+  src: url("../assets/TildaSans-Light.woff") format("woff");
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+* {
+  font-family: "TildaSans-Light";
+}
+
+p {
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+}
+
+h4 {
+  margin: 12px 0;
+}
+
+button {
+  padding: 0;
+}

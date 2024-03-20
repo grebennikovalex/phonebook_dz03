@@ -1,0 +1,32 @@
+@import "../styles/colors.scss";
+
+.button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  width: 52px;
+  background-color: rgb(247, 247, 247);
+  color: $secondary-text;
+  font-family: inherit;
+  font-size: 28px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+
+  &:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(192, 191, 191);
+  }
+
+  &:active {
+    color: orangered;
+    background-color: rgb(255, 231, 231);
+  }
+
+  &.disabled {
+    background-color: $disabled;
+    pointer-events: none;
+  }
+}
