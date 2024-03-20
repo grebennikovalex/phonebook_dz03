@@ -6,6 +6,7 @@ import style from "./Button.module.scss";
 export default function Button({ onClick = () => {}, type = "primary", disabled = false, loading = false, text }) {
   return (
     <button
+      autoFocus
       onClick={(e) => {
         e.preventDefault();
         onClick();

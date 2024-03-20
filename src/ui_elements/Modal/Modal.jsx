@@ -8,7 +8,8 @@ export default function Modal({ open, close, children, action }) {
     return (
       <>
         <div className={style.backDrop} onClick={close}></div>
-        <form
+        <div
+          tabIndex="0"
           className={style.body}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
@@ -24,7 +25,7 @@ export default function Modal({ open, close, children, action }) {
           <div className={style.buttonsContainer}>
             <Button onClick={action} type="primary" text="Ok" />
           </div>
-        </form>
+        </div>
       </>
     );
 }

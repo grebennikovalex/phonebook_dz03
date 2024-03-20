@@ -27,9 +27,6 @@ export default function DeleteButton({ id, name, getAll }) {
 
   return (
     <>
-      <Modal open={openPrompt} close={() => setOpenPrompt(false)} action={() => deleteContact()}>
-        <div style={{ fontSize: "18px" }}>{`Удалить контакт ${name}?`}</div>
-      </Modal>
       <button
         onClick={() => setOpenPrompt(true)}
         disabled={loading}
@@ -45,6 +42,9 @@ export default function DeleteButton({ id, name, getAll }) {
           <p style={{ rotate: "45deg" }}>+</p>
         )}
       </button>
+      <Modal open={openPrompt} close={() => setOpenPrompt(false)} action={() => deleteContact()}>
+        <div style={{ fontSize: "18px" }}>{`Удалить контакт ${name}?`}</div>
+      </Modal>
     </>
   );
 }
