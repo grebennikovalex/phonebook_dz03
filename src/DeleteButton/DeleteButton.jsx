@@ -3,6 +3,9 @@ import cn from "classnames";
 import Spinner from "../ui_elements/Spinner/Spinner";
 import style from "./DeleteButton.module.scss";
 import Modal from "../ui_elements/Modal/Modal";
+import Cookies from "js-cookie";
+
+const Host = import.meta.env.VITE_HOST;
 
 export default function DeleteButton({ id, name, getAll }) {
   const [loading, setLoading] = useState(false);
@@ -12,9 +15,12 @@ export default function DeleteButton({ id, name, getAll }) {
     setLoading(true);
     const data = {
       method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${Cookies.get("phonebook_token")}`,
+      },
     };
     try {
-      const response = await fetch(`http://109.71.240.150:3001/api/v1.0/contacts/${id}`, data);
+      const response = await fetch(`http://${Host}/api/v1.0/contacts/${id}`, data);
       if (response.status === 204) {
         getAll(false);
         setLoading(false);

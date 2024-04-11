@@ -6,6 +6,9 @@ import PhoneInput from "../ui_elements/PhoneInput/PhoneInput";
 import DeleteButton from "../DeleteButton/DeleteButton.jsx";
 import OkButton from "../OkButton/OkButton.jsx";
 import style from "./ContactItem.module.scss";
+import Cookies from "js-cookie";
+
+const Host = import.meta.env.VITE_HOST;
 
 export default function ContactItem({ contact, getAll }) {
   const [loading, setLoading] = useState(false);
@@ -38,10 +41,11 @@ export default function ContactItem({ contact, getAll }) {
       body: raw,
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${Cookies.get("phonebook_token")}`,
       },
     };
     try {
-      const response = await fetch(`http://109.71.240.150:3001/api/v1.0/contacts/${id}`, data);
+      const response = await fetch(`http://${Host}/api/v1.0/contacts/${id}`, data);
       if (response.status === 200) {
         getAll(false);
         setLoading(false);

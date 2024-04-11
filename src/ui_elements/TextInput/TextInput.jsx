@@ -5,7 +5,7 @@ import style from "./TextInput.module.scss";
 
 const regexSpaces = /^([a-zA-Z0-9а-яА-Я]+\s)*[a-zA-Zа-яА-Я0-9]+$/;
 
-export default function TextInput({ label, name, required = false, disabled, editingMode = false }) {
+export default function TextInput({ label, name, required = false, disabled, editingMode = false, type = "text" }) {
   const { register, control } = useFormContext();
 
   return (
@@ -31,6 +31,7 @@ export default function TextInput({ label, name, required = false, disabled, edi
             onChange={onChange}
             disabled={disabled}
             autoFocus={true}
+            type={type}
           />
         )}
       />

@@ -12,10 +12,11 @@
   "dependencies": {
     "@react-input/mask": "^1.0.22",
     "classnames": "^2.5.1",
+    "js-cookie": "^3.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.0",
-    "uuid": "^9.0.1"
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.64",
