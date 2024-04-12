@@ -2,7 +2,7 @@ import React from "react";
 import style from "./Modal.module.scss";
 import Button from "../Button/Button";
 
-export default function Modal({ open, close, children, action }) {
+export default function Modal({ open, close, children, action, loading }) {
   if (!open) return null;
   else
     return (
@@ -23,7 +23,7 @@ export default function Modal({ open, close, children, action }) {
           </button>
           <div className={style.content}>{children}</div>
           <div className={style.buttonsContainer}>
-            <Button onClick={action} type="primary" text="Ok" />
+            <Button onClick={action} type="primary" text="Ok" loading={loading} />
           </div>
         </div>
       </>

@@ -5,6 +5,6 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: "../node2024/dz03/public",
+    outDir: "../node2024/phonebook/public",
   },
 });

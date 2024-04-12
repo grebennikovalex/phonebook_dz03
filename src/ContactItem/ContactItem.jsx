@@ -69,7 +69,7 @@ export default function ContactItem({ contact, getAll }) {
             }}
           >
             <div className={style.editItem}>
-              <TextInput name="name" required label="" disabled={false} editingMode={true} />
+              <TextInput name="name" required label="" disabled={false} editingMode={true} autoFocus={true} />
               <PhoneInput name="phone" required label="" disabled={false} editingMode={true} />
             </div>
             <OkButton onClick={() => editContact()} disabled={!isValid || loading} loading={loading} />

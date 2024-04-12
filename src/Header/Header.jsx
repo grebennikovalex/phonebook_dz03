@@ -40,14 +40,10 @@ export default function Header() {
 
   return (
     <header className={style.header}>
-      {user && (
-        <>
-          <p>{`Пользователь: ${isAuth && user?.userName ? user.userName : ""}`}</p>
-          <div className={style.buttonWrapper}>
-            <Button text="Выход" onClick={logout} disabled={!isAuth} />
-          </div>
-        </>
-      )}
+      <p className={style.headerTitle}>{`Пользователь: ${isAuth && user ? user.userName : ""}`}</p>
+      <div className={style.buttonWrapper}>
+        <Button text="Выход" onClick={logout} disabled={!isAuth} />
+      </div>
     </header>
   );
 }
